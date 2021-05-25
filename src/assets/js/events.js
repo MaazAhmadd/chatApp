@@ -120,8 +120,3 @@ window.addEventListener("load", () => {
     helpers.toggleModal("recording-options-modal", false);
   });
 });
-// let myfunc = function () {
-//   return console.log(roomLink);
-// };
-// myfunc();
-// export { roomLink };

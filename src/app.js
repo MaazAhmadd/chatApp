@@ -5,8 +5,9 @@ let port = process.env.PORT || 3000;
 const httpsServer = require("https")
   .createServer(
     {
-      key: fs.readFileSync("server.key"),
-      cert: fs.readFileSync("server.cert"),
+      cert: fs.readFileSync("cannachan_chat.crt"),
+      ca: fs.readFileSync("cannachan_chat.ca-bundle"),
+      // key: fs.readFileSync("./server.key"),
     },
     app
   )
