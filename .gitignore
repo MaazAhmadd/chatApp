@@ -26,5 +26,3 @@ node_modules/
 .env.test
 
 #files
-myaws.pem
-videochatv1.ppk
