@@ -1,13 +1,16 @@
 let express = require("express");
 let app = express();
+var cors = require("cors");
 const fs = require("fs");
 let port = process.env.PORT || 3000;
 const httpsServer = require("https")
   .createServer(
     {
-      cert: fs.readFileSync("cannachan_chat.crt"),
-      ca: fs.readFileSync("cannachan_chat.ca-bundle"),
-      // key: fs.readFileSync("./server.key"),
+      // cert: fs.readFileSync("cannachan_chat.crt"),
+      // ca: fs.readFileSync("cannachan_chat.ca-bundle"),
+      cert: fs.readFileSync("server.cert"),
+      key: fs.readFileSync("server.key"),
+      // key: fs.readFileSync("private.key"),
     },
     app
   )
@@ -20,6 +23,7 @@ let stream = require("./ws/stream");
 let path = require("path");
 let favicon = require("serve-favicon");
 
+app.use(cors());
 app.use(favicon(path.join(__dirname, "favicon.ico")));
 app.use("/assets", express.static(path.join(__dirname, "assets")));
 
