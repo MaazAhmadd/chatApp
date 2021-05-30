@@ -2,7 +2,7 @@ let express = require("express");
 let app = express();
 const fs = require("fs");
 var cors = require("cors");
-let port = process.env.PORT || 3000;
+let port = process.env.PORT || 443;
 const httpsServer = require("https")
   .createServer(
     {
