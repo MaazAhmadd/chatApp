@@ -124,7 +124,7 @@ export default {
         //   ],
         // },
         {
-          urls: "turn:stun1.l.google.com:19302",
+          urls: "stun:stun1.l.google.com:19302",
         },
       ],
     };
@@ -181,7 +181,7 @@ export default {
       document
         .querySelector("#new-chat-notification")
         .setAttribute("hidden", true);
-    } else { 
+    } else {
       document
         .querySelector("#new-chat-notification")
         .removeAttribute("hidden");
