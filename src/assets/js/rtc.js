@@ -167,23 +167,23 @@ window.addEventListener("load", () => {
 
       //create offer
       if (createOffer) {
-        let negotiating = false;
+        // let negotiating = false;
         pc[partnerName].onnegotiationneeded = async () => {
-          try {
-            if (negotiating || pc.signalingState != "stable") return;
-            negotiating = true;
-            let offer = await pc[partnerName].createOffer();
+          // try {
+          //   if (negotiating || pc.signalingState != "stable") return;
+          //   negotiating = true;
+          let offer = await pc[partnerName].createOffer();
 
-            await pc[partnerName].setLocalDescription(offer);
+          await pc[partnerName].setLocalDescription(offer);
 
-            socket.emit("sdp", {
-              description: pc[partnerName].localDescription,
-              to: partnerName,
-              sender: socketId,
-            });
-          } finally {
-            negotiating = false;
-          }
+          socket.emit("sdp", {
+            description: pc[partnerName].localDescription,
+            to: partnerName,
+            sender: socketId,
+          });
+          // } finally {
+          //   negotiating = false;
+          // }
         };
       }
 

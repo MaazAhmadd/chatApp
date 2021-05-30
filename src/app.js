@@ -1,7 +1,7 @@
 let express = require("express");
 let app = express();
-var cors = require("cors");
 const fs = require("fs");
+var cors = require("cors");
 let port = process.env.PORT || 3000;
 const httpsServer = require("https")
   .createServer(
