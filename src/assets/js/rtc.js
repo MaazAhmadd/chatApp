@@ -9,7 +9,7 @@ import h from "./helpers.js";
 window.addEventListener("load", () => {
   const room = h.getQString(location.href, "room");
   const username = sessionStorage.getItem("username");
-  let localmaxusers = 0;
+  let localmaxusers = 3;
   if (!room) {
     document.querySelector("#room-create").attributes.removeNamedItem("hidden");
   } else if (!username) {
