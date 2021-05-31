@@ -13,13 +13,16 @@ window.addEventListener("load", () => {
   let localmaxusers = 0;
   if (!room) {
     document.querySelector("#room-create").attributes.removeNamedItem("hidden");
-  } else if (localmaxusers > maxusers) {
-    alert("maximum number of users already connected");
   } else if (!username) {
-    localmaxusers++;
-    document
-      .querySelector("#username-set")
-      .attributes.removeNamedItem("hidden");
+    if (localmaxusers > maxusers && localmaxusers > 0) {
+      alert("maximum number of users already connected");
+      return;
+    } else {
+      localmaxusers++;
+      document
+        .querySelector("#username-set")
+        .attributes.removeNamedItem("hidden");
+    }
   } else {
     localmaxusers++;
     let commElem = document.getElementsByClassName("room-comm");
