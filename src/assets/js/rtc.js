@@ -4,14 +4,14 @@
  */
 
 import h from "./helpers.js";
+import { maxusers } from "./../../max-users";
+
 // import { roomLink } from "./events.js";
 
 window.addEventListener("load", () => {
   const room = h.getQString(location.href, "room");
   const username = sessionStorage.getItem("username");
   let localmaxusers = 0;
-  let maxusers = h.maxusers;
-  h.maxusers = 0;
   if (!room) {
     localmaxusers++;
     document.querySelector("#room-create").attributes.removeNamedItem("hidden");
@@ -22,8 +22,8 @@ window.addEventListener("load", () => {
     document
       .querySelector("#username-set")
       .attributes.removeNamedItem("hidden");
-  } else if (localmaxusers > maxusers) {
-    alert("maximum number of users already connected");
+    // } else if (localmaxusers > maxusers) {
+    //   alert("maximum number of users already connected");
   } else {
     localmaxusers++;
 
@@ -37,18 +37,31 @@ window.addEventListener("load", () => {
 
     let socket = io("/stream");
 
+    // let connection = [];
     var socketId = "";
     var myStream = "";
     var screen = "";
     var recordedStream = [];
     var mediaRecorder = "";
 
+    // Check if maximum number of users are connected
+
+    // socket.on("request", (request) => {
+    //   connection.push(request);
+    //   console.log(request);
+    //   // localmaxusers++;
+    // });
+    // if (connection.length > maxusers) {
+    //   alert("maximum number of users connected");
+    // }
+
     //Get user video by default
     getAndSetUserStream();
 
     socket.on("connect", () => {
       //set socketId
-      socketId = socket.io.engine.id;
+      // socket.emit("request", { user: "user connected" });
+      // socketId = socket.io.engine.id;
 
       socket.emit("subscribe", {
         room: room,
