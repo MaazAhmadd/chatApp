@@ -10,19 +10,16 @@ window.addEventListener("load", () => {
   const room = h.getQString(location.href, "room");
   const username = sessionStorage.getItem("username");
   const maxusers = sessionStorage.getItem("max-users");
-  let localmaxusers = 0;
+  let localmaxusers = 1;
   if (!room) {
     document.querySelector("#room-create").attributes.removeNamedItem("hidden");
+  } else if (localmaxusers > maxusers) {
+    alert("maximum number of users already connected");
   } else if (!username) {
-    if (localmaxusers > maxusers && localmaxusers > 0) {
-      alert("maximum number of users already connected");
-      return;
-    } else {
-      localmaxusers++;
-      document
-        .querySelector("#username-set")
-        .attributes.removeNamedItem("hidden");
-    }
+    localmaxusers++;
+    document
+      .querySelector("#username-set")
+      .attributes.removeNamedItem("hidden");
   } else {
     let commElem = document.getElementsByClassName("room-comm");
 
