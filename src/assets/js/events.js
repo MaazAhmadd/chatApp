@@ -53,8 +53,7 @@ window.addEventListener("load", () => {
 
     let roomName = document.querySelector("#room-name").value;
     let yourName = document.querySelector("#your-name").value;
-    let maxuserrs = document.querySelector("#max-users").value;
-    sessionStorage.setItem("max-users", maxuserrs);
+    helpers.maxusers = document.querySelector("#max-users").value;
 
     //create room link
     roomLink = `${location.origin}?room=${roomName

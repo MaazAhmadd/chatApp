@@ -1,4 +1,6 @@
+let maxusers = 0;
 export default {
+  maxusers,
   generateRandomString() {
     const crypto = window.crypto || window.msCrypto;
     let array = new Uint32Array(1);
