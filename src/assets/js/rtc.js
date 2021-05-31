@@ -10,7 +10,7 @@ window.addEventListener("load", () => {
   const room = h.getQString(location.href, "room");
   const username = sessionStorage.getItem("username");
   const maxusers = sessionStorage.getItem("max-users");
-  let localmaxusers = 1;
+  let localmaxusers = 0;
   if (!room) {
     document.querySelector("#room-create").attributes.removeNamedItem("hidden");
   } else if (localmaxusers > maxusers) {
