@@ -9,16 +9,16 @@ import h from "./helpers.js";
 window.addEventListener("load", () => {
   const room = h.getQString(location.href, "room");
   const username = sessionStorage.getItem("username");
-
-  var maxusers = 0;
+  const maxusers = sessionStorage.getItem("max-users");
+  let localmaxusers = 0;
   if (!room) {
     document.querySelector("#room-create").attributes.removeNamedItem("hidden");
   } else if (!username) {
-    if (maxusers > h.maximumUsers && maxusers > 0) {
+    if (localmaxusers > maxusers && localmaxusers > 0) {
       alert("maximum number of users already connected");
       return;
     } else {
-      maxusers++;
+      localmaxusers++;
       document
         .querySelector("#username-set")
         .attributes.removeNamedItem("hidden");
