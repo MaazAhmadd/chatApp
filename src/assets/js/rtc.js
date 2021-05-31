@@ -10,13 +10,13 @@ window.addEventListener("load", () => {
   const room = h.getQString(location.href, "room");
   const username = sessionStorage.getItem("username");
   let localmaxusers = 0;
+  let maxusers = h.maxusers;
+  h.maxusers = 0;
   if (!room) {
     ++localmaxusers;
     document.querySelector("#room-create").attributes.removeNamedItem("hidden");
-  } else if (localmaxusers >= h.maxusers) {
+  } else if (localmaxusers >= maxusers) {
     alert("maximum number of users already connected");
-    console.log("helper ", h.maxusers);
-    console.log("local ", localmaxusers);
   } else if (!username) {
     ++localmaxusers;
     document
