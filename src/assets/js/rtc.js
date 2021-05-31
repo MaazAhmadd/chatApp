@@ -10,12 +10,19 @@ window.addEventListener("load", () => {
   const room = h.getQString(location.href, "room");
   const username = sessionStorage.getItem("username");
 
+  var maxusers = 0;
   if (!room) {
     document.querySelector("#room-create").attributes.removeNamedItem("hidden");
   } else if (!username) {
-    document
-      .querySelector("#username-set")
-      .attributes.removeNamedItem("hidden");
+    if (maxusers > h.maximumUsers && maxusers > 0) {
+      alert("maximum number of users already connected");
+      return;
+    } else {
+      maxusers++;
+      document
+        .querySelector("#username-set")
+        .attributes.removeNamedItem("hidden");
+    }
   } else {
     let commElem = document.getElementsByClassName("room-comm");
 
@@ -32,25 +39,18 @@ window.addEventListener("load", () => {
     var screen = "";
     var recordedStream = [];
     var mediaRecorder = "";
-    var maxusers = 0;
 
     //Get user video by default
     getAndSetUserStream();
 
     socket.on("connect", () => {
-      if (maxusers > h.maximumUsers && maxusers > 0) {
-        alert("maximum number of users already connected");
-        return;
-      } else {
-        maxusers++;
-        //set socketId
-        socketId = socket.io.engine.id;
+      //set socketId
+      socketId = socket.io.engine.id;
 
-        socket.emit("subscribe", {
-          room: room,
-          socketId: socketId,
-        });
-      }
+      socket.emit("subscribe", {
+        room: room,
+        socketId: socketId,
+      });
 
       socket.on("new user", (data) => {
         socket.emit("newUserStart", { to: data.socketId, sender: socketId });
