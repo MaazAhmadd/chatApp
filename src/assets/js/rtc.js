@@ -9,20 +9,22 @@ import h from "./helpers.js";
 window.addEventListener("load", () => {
   const room = h.getQString(location.href, "room");
   const username = sessionStorage.getItem("username");
-  let localmaxusers = 3;
+  let localmaxusers = 0;
   if (!room) {
+    ++localmaxusers;
     document.querySelector("#room-create").attributes.removeNamedItem("hidden");
   } else if (!username) {
     if (localmaxusers > h.maxusers) {
       alert("maximum number of users already connected");
+      ++localmaxusers;
     } else {
-      localmaxusers++;
+      ++localmaxusers;
       document
         .querySelector("#username-set")
         .attributes.removeNamedItem("hidden");
     }
   } else {
-    localmaxusers++;
+    ++localmaxusers;
 
     let commElem = document.getElementsByClassName("room-comm");
 
