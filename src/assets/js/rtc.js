@@ -38,7 +38,7 @@ window.addEventListener("load", () => {
     getAndSetUserStream();
 
     socket.on("connect", () => {
-      if (maxusers > h.maximumUsers && maxusers > 1) {
+      if (maxusers > h.maximumUsers && maxusers > 0) {
         alert("maximum number of users already connected");
         return;
       } else {
