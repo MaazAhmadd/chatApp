@@ -24,7 +24,6 @@ window.addEventListener("load", () => {
         .attributes.removeNamedItem("hidden");
     }
   } else {
-    localmaxusers++;
     let commElem = document.getElementsByClassName("room-comm");
 
     for (let i = 0; i < commElem.length; i++) {
