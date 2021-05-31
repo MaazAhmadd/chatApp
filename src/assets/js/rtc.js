@@ -15,7 +15,7 @@ window.addEventListener("load", () => {
   if (!room) {
     ++localmaxusers;
     document.querySelector("#room-create").attributes.removeNamedItem("hidden");
-  } else if (localmaxusers >= maxusers) {
+  } else if (localmaxusers > maxusers) {
     alert("maximum number of users already connected");
   } else if (!username) {
     ++localmaxusers;
