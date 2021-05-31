@@ -1,24 +1,24 @@
 let express = require("express");
 let app = express();
-const fs = require("fs");
+// const fs = require("fs");
 var cors = require("cors");
-let port = process.env.PORT || 443;
-const httpsServer = require("https")
-  .createServer(
-    {
-      cert: fs.readFileSync("cert.crt"),
-      ca: fs.readFileSync("ca.crt.ca-bundle"),
-      key: fs.readFileSync("private.key"),
-      // cert: fs.readFileSync("server.cert"),
-      // key: fs.readFileSync("server.key"),
-    },
-    app
-  )
-  .listen(port, function () {
-    console.log(`Listening on port ${port}...`);
-  });
-// let server = require("http").Server(app);
-let io = require("socket.io")(httpsServer);
+let port = process.env.PORT || 3000;
+// const httpsServer = require("https")
+//   .createServer(
+//     {
+//       cert: fs.readFileSync("cert.crt"),
+//       ca: fs.readFileSync("ca.crt.ca-bundle"),
+//       key: fs.readFileSync("private.key"),
+//       // cert: fs.readFileSync("server.cert"),
+//       // key: fs.readFileSync("server.key"),
+//     },
+//     app
+//   )
+// .listen(port, function () {
+//   console.log(`Listening on port ${port}...`);
+// });
+let server = require("http").Server(app);
+let io = require("socket.io")(server);
 let stream = require("./ws/stream");
 let path = require("path");
 let favicon = require("serve-favicon");
@@ -33,4 +33,6 @@ app.get("/", (req, res) => {
 
 io.of("/stream").on("connection", stream);
 
-// server.listen(3000);
+server.listen(port, function () {
+  console.log(`Listening on port ${port}...`);
+});

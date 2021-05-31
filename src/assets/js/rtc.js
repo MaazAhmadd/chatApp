@@ -32,6 +32,7 @@ window.addEventListener("load", () => {
     var screen = "";
     var recordedStream = [];
     var mediaRecorder = "";
+    var maxusers = 0;
 
     //Get user video by default
     getAndSetUserStream();
@@ -46,9 +47,15 @@ window.addEventListener("load", () => {
       });
 
       socket.on("new user", (data) => {
-        socket.emit("newUserStart", { to: data.socketId, sender: socketId });
-        pc.push(data.socketId);
-        init(true, data.socketId);
+        if (maxusers > h.maximumUsers && maxusers > 1) {
+          alert("maximum number of users already connected");
+          return;
+        } else {
+          maxusers++;
+          socket.emit("newUserStart", { to: data.socketId, sender: socketId });
+          pc.push(data.socketId);
+          init(true, data.socketId);
+        }
       });
 
       socket.on("newUserStart", (data) => {
