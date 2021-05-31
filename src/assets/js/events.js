@@ -1,5 +1,5 @@
 import helpers from "./helpers.js";
-import { maxusers } from "./../../max-users";
+import { maxusers } from "./max-users";
 let roomLink = "";
 
 window.addEventListener("load", () => {
@@ -55,6 +55,7 @@ window.addEventListener("load", () => {
     let roomName = document.querySelector("#room-name").value;
     let yourName = document.querySelector("#your-name").value;
     maxusers = document.querySelector("#max-users").value;
+    console.log(maxusers);
 
     //create room link
     roomLink = `${location.origin}?room=${roomName

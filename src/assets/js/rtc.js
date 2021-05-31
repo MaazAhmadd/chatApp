@@ -4,7 +4,7 @@
  */
 
 import h from "./helpers.js";
-import { maxusers } from "./../../max-users";
+import { maxusers } from "./max-users";
 
 // import { roomLink } from "./events.js";
 
