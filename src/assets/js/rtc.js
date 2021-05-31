@@ -38,24 +38,24 @@ window.addEventListener("load", () => {
     getAndSetUserStream();
 
     socket.on("connect", () => {
-      //set socketId
-      socketId = socket.io.engine.id;
+      if (maxusers > h.maximumUsers && maxusers > 1) {
+        alert("maximum number of users already connected");
+        return;
+      } else {
+        maxusers++;
+        //set socketId
+        socketId = socket.io.engine.id;
 
-      socket.emit("subscribe", {
-        room: room,
-        socketId: socketId,
-      });
+        socket.emit("subscribe", {
+          room: room,
+          socketId: socketId,
+        });
+      }
 
       socket.on("new user", (data) => {
-        if (maxusers > h.maximumUsers && maxusers > 1) {
-          alert("maximum number of users already connected");
-          return;
-        } else {
-          maxusers++;
-          socket.emit("newUserStart", { to: data.socketId, sender: socketId });
-          pc.push(data.socketId);
-          init(true, data.socketId);
-        }
+        socket.emit("newUserStart", { to: data.socketId, sender: socketId });
+        pc.push(data.socketId);
+        init(true, data.socketId);
       });
 
       socket.on("newUserStart", (data) => {
