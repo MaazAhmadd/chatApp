@@ -21,6 +21,7 @@ window.addEventListener("load", () => {
       .querySelector("#username-set")
       .attributes.removeNamedItem("hidden");
   } else {
+    localmaxusers++;
     let commElem = document.getElementsByClassName("room-comm");
 
     for (let i = 0; i < commElem.length; i++) {
