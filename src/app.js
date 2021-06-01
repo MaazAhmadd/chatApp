@@ -38,31 +38,9 @@ app.get("/", (req, res) => {
 });
 
 app.post("/sendmaxuser", (req, res) => {
-  // console.log("maxusers: ", req.body.maxusers, "user: ", req.body.n);
   maxusers.setmaxusers(0);
   maxusers.setmaxusers(req.body.maxusers);
-
-  // else if (req.body.n) {
-  //   maxusers.incrementlocal();
-  // }
-  // else {
-  //   res.send("ok");
-  // }
   res.status(200).send("everything ok");
-});
-// app.get("/setuserstozero", (req, res) => {
-//   maxusers.setmaxusers(1);
-//   maxusers.setlocalusers(0);
-//   res.status(200).send("all ok");
-// });
-app.get("/check", (req, res) => {
-  // console.log("local: ", maxusers.getlocalmaxuser());
-  // console.log(",max: ", maxusers.getmaxusers());
-  if (maxusers.getlocalmaxuser() > maxusers.getmaxusers()) {
-    res.status(200).send("maxusers reached");
-  } else {
-    res.status(200).send("maxusers not reached");
-  }
 });
 let len = 0;
 io.of("/stream").on("connection", (socket) => {
@@ -101,9 +79,6 @@ io.of("/stream").on("connection", (socket) => {
 });
 app.get("/checkmaxi", (req, res) => {
   if (len > maxusers.getmaxusers()) {
-    console.log("users connected: ", len);
-    console.log("max users allowed: ", maxusers.getmaxusers());
-    console.log("get max users reached");
     res.status(200).send("maxi reached");
     len = 0;
   } else {

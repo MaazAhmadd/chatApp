@@ -69,10 +69,8 @@ window.addEventListener("load", () => {
     let roomName = document.querySelector("#room-name").value;
     let yourName = document.querySelector("#your-name").value;
     let maxusers = document.querySelector("#max-users").value;
-    // console.log(maxusers);
 
     postData("/sendmaxuser", { maxusers });
-    console.log("max users sent");
 
     //create room link
     roomLink = `${location.origin}?room=${roomName
@@ -111,9 +109,6 @@ window.addEventListener("load", () => {
   //When the 'Enter room' button is clicked.
   document.getElementById("enter-room").addEventListener("click", (e) => {
     e.preventDefault();
-    // let n = "user joined";
-    // postData("/usercheck", { n });
-    // console.log("posted 2");
 
     let name = document.querySelector("#username").value;
 

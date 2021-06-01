@@ -11,7 +11,6 @@ const incrementlocal = () => {
 };
 const setmaxusers = (v) => {
   maxusers = v;
-  console.log("max users: ", v);
 };
 const setlocalusers = (v) => {
   localmaxuser = v;

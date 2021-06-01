@@ -1,5 +1,3 @@
-const maxusers = require("../maxusers");
-
 const stream = (socket) => {
   socket.on("subscribe", (data) => {
     //subscribe/join a room
@@ -9,12 +7,7 @@ const stream = (socket) => {
     //Inform other members in the room of new user's arrival
     console.log("number of users: ", socket.adapter.rooms[data.room].length);
     if (socket.adapter.rooms[data.room].length > 1) {
-      if (socket.adapter.rooms[data.room].length > maxusers.getmaxusers()) {
-        socket.emit("max users reached");
-        console.log("emitted max users reached");
-      } else {
-        socket.to(data.room).emit("new user", { socketId: data.socketId });
-      }
+      socket.to(data.room).emit("new user", { socketId: data.socketId });
     }
   });
 

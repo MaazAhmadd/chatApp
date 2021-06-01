@@ -12,16 +12,8 @@ window.addEventListener("load", () => {
       if (data == "maxi reached") {
         alert("room full");
       } else {
-        // console.log(socket.on("max users reached"));
-        // socket.on("max users reached", () => alert("max users reached"));
         const room = h.getQString(location.href, "room");
         const username = sessionStorage.getItem("username");
-        // fetch("/check")
-        //   .then((response) => response.text())
-        //   .then((data) => {
-        //     if (data !== "maxusers not reached") {
-        //       alert("Room full");
-        //     } else
         if (!room) {
           document
             .querySelector("#room-create")
@@ -49,24 +41,8 @@ window.addEventListener("load", () => {
           //Get user video by default
           getAndSetUserStream();
 
-          async function postData(url = "") {
-            // Default options are marked with *
-            const response = await fetch(url, {
-              method: "POST", // *GET, POST, PUT, DELETE, etc.
-              mode: "cors",
-              cache: "no-cache",
-              credentials: "same-origin",
-              headers: { "Content-Type": "application/json" },
-              redirect: "follow",
-              referrerPolicy: "no-referrer",
-            });
-            return response;
-          }
-
           // let n = "usercheck";
           socket.on("connect", () => {
-            // postData("/usercheck", { n });
-
             //set socketId
             // socket.emit("request", { user: "user connected" });
             // socketId = socket.io.engine.id;
@@ -77,7 +53,6 @@ window.addEventListener("load", () => {
             });
 
             socket.on("new user", (data) => {
-              // postData("/usercheck", { n });
               socket.emit("newUserStart", {
                 to: data.socketId,
                 sender: socketId,
@@ -202,11 +177,7 @@ window.addEventListener("load", () => {
 
             //create offer
             if (createOffer) {
-              // let negotiating = false;
               pc[partnerName].onnegotiationneeded = async () => {
-                // try {
-                //   if (negotiating || pc.signalingState != "stable") return;
-                //   negotiating = true;
                 let offer = await pc[partnerName].createOffer();
 
                 await pc[partnerName].setLocalDescription(offer);
@@ -216,9 +187,6 @@ window.addEventListener("load", () => {
                   to: partnerName,
                   sender: socketId,
                 });
-                // } finally {
-                //   negotiating = false;
-                // }
               };
             }
 
@@ -532,8 +500,6 @@ window.addEventListener("load", () => {
               }
             });
         }
-
-        // });
       }
     });
 });
