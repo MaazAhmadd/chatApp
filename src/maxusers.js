@@ -11,5 +11,15 @@ const incrementlocal = () => {
 };
 const setmaxusers = (v) => {
   maxusers = v;
+  console.log("max users: ", v);
 };
-module.exports = { getmaxusers, setmaxusers, incrementlocal, getlocalmaxuser };
+const setlocalusers = (v) => {
+  localmaxuser = v;
+};
+module.exports = {
+  getmaxusers,
+  setmaxusers,
+  incrementlocal,
+  getlocalmaxuser,
+  setlocalusers,
+};

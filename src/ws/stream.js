@@ -7,8 +7,14 @@ const stream = (socket) => {
     socket.join(data.socketId);
 
     //Inform other members in the room of new user's arrival
+    console.log("number of users: ", socket.adapter.rooms[data.room].length);
     if (socket.adapter.rooms[data.room].length > 1) {
-      socket.to(data.room).emit("new user", { socketId: data.socketId });
+      if (socket.adapter.rooms[data.room].length > maxusers.getmaxusers()) {
+        socket.emit("max users reached");
+        console.log("emitted max users reached");
+      } else {
+        socket.to(data.room).emit("new user", { socketId: data.socketId });
+      }
     }
   });
 
@@ -33,5 +39,6 @@ const stream = (socket) => {
     socket.to(data.room).emit("chat", { sender: data.sender, msg: data.msg });
   });
 };
+// };
 
 module.exports = stream;
