@@ -1,4 +1,10 @@
+const maxusers = require("../maxusers");
+
 const stream = (socket) => {
+  if (maxusers.getlocalmaxuser > maxusers.getmaxusers) {
+    socket.emit("max_users_reached");
+  }
+
   socket.on("subscribe", (data) => {
     //subscribe/join a room
     socket.join(data.room);

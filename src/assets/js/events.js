@@ -1,5 +1,5 @@
 import helpers from "./helpers.js";
-import { maxusers } from "./max-users";
+
 let roomLink = "";
 
 window.addEventListener("load", () => {
@@ -47,15 +47,31 @@ window.addEventListener("load", () => {
       });
     }
   });
-
+  async function postData(url = "", data = {}) {
+    // Default options are marked with *
+    const response = await fetch(url, {
+      method: "POST", // *GET, POST, PUT, DELETE, etc.
+      mode: "cors",
+      cache: "no-cache",
+      credentials: "same-origin",
+      headers: { "Content-Type": "application/json" },
+      redirect: "follow",
+      referrerPolicy: "no-referrer",
+      body: JSON.stringify(data),
+    });
+    return response;
+  }
+  let n = 1;
   //When the 'Create room" is button is clicked
   document.getElementById("create-room").addEventListener("click", (e) => {
     e.preventDefault();
 
     let roomName = document.querySelector("#room-name").value;
     let yourName = document.querySelector("#your-name").value;
-    maxusers = document.querySelector("#max-users").value;
+    let maxusers = document.querySelector("#max-users").value;
     console.log(maxusers);
+
+    postData("/", { maxusers });
 
     //create room link
     roomLink = `${location.origin}?room=${roomName
@@ -85,6 +101,7 @@ window.addEventListener("load", () => {
       //empty the values
       document.querySelector("#room-name").value = "";
       document.querySelector("#your-name").value = "";
+      document.querySelector("#max-users").value = "";
     } else {
       document.querySelector("#err-msg").innerHTML = "All fields are required";
     }
@@ -93,6 +110,7 @@ window.addEventListener("load", () => {
   //When the 'Enter room' button is clicked.
   document.getElementById("enter-room").addEventListener("click", (e) => {
     e.preventDefault();
+    postData("/", { n });
 
     let name = document.querySelector("#username").value;
 

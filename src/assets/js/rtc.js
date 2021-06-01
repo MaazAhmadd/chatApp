@@ -4,29 +4,17 @@
  */
 
 import h from "./helpers.js";
-import { maxusers } from "./max-users";
-
-// import { roomLink } from "./events.js";
 
 window.addEventListener("load", () => {
   const room = h.getQString(location.href, "room");
   const username = sessionStorage.getItem("username");
-  let localmaxusers = 0;
   if (!room) {
-    localmaxusers++;
     document.querySelector("#room-create").attributes.removeNamedItem("hidden");
-  } else if (localmaxusers > maxusers) {
-    alert("maximum number of users already connected");
   } else if (!username) {
-    localmaxusers++;
     document
       .querySelector("#username-set")
       .attributes.removeNamedItem("hidden");
-    // } else if (localmaxusers > maxusers) {
-    //   alert("maximum number of users already connected");
   } else {
-    localmaxusers++;
-
     let commElem = document.getElementsByClassName("room-comm");
 
     for (let i = 0; i < commElem.length; i++) {
@@ -37,28 +25,36 @@ window.addEventListener("load", () => {
 
     let socket = io("/stream");
 
-    // let connection = [];
     var socketId = "";
     var myStream = "";
     var screen = "";
     var recordedStream = [];
     var mediaRecorder = "";
 
-    // Check if maximum number of users are connected
-
-    // socket.on("request", (request) => {
-    //   connection.push(request);
-    //   console.log(request);
-    //   // localmaxusers++;
-    // });
-    // if (connection.length > maxusers) {
-    //   alert("maximum number of users connected");
-    // }
-
     //Get user video by default
     getAndSetUserStream();
 
+    async function postData(url = "", data = {}) {
+      // Default options are marked with *
+      const response = await fetch(url, {
+        method: "POST", // *GET, POST, PUT, DELETE, etc.
+        mode: "cors",
+        cache: "no-cache",
+        credentials: "same-origin",
+        headers: { "Content-Type": "application/json" },
+        redirect: "follow",
+        referrerPolicy: "no-referrer",
+        body: JSON.stringify(data),
+      });
+      return response;
+    }
+    let n = 1;
+    socket.on("max_users_reached", () => {
+      alert("maximum number of users reached");
+    });
     socket.on("connect", () => {
+      postData("/", { n });
+
       //set socketId
       // socket.emit("request", { user: "user connected" });
       // socketId = socket.io.engine.id;
@@ -69,6 +65,7 @@ window.addEventListener("load", () => {
       });
 
       socket.on("new user", (data) => {
+        postData("/", { n });
         socket.emit("newUserStart", { to: data.socketId, sender: socketId });
         pc.push(data.socketId);
         init(true, data.socketId);

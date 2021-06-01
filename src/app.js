@@ -2,6 +2,7 @@ let express = require("express");
 let app = express();
 // const fs = require("fs");
 var cors = require("cors");
+let maxusers = require("./maxusers");
 let port = process.env.PORT || 3000;
 // const httpsServer = require("https")
 //   .createServer(
@@ -26,9 +27,21 @@ let favicon = require("serve-favicon");
 app.use(cors());
 app.use(favicon(path.join(__dirname, "favicon.ico")));
 app.use("/assets", express.static(path.join(__dirname, "assets")));
+app.use(express.json());
+app.use(express.urlencoded({ extended: true }));
 
 app.get("/", (req, res) => {
   res.sendFile(__dirname + "/index.html");
+});
+
+app.post("/", (req, res) => {
+  if (req.body.maxusers) {
+    maxusers.setmaxusers(req.body.maxusers);
+  } else if (req.body.n) {
+    maxusers.incrementlocal();
+  } else {
+    res.send("ok");
+  }
 });
 
 io.of("/stream").on("connection", stream);
