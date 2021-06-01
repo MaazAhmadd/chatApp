@@ -5,15 +5,15 @@
 
 import h from "./helpers.js";
 // fetch("/setuserstozero").then((r) => console.log("user set to zero"));
-fetch("/checkmaxi")
-  .then((res) => res.text())
-  .then((data) => {
-    if (data == "maxi reached") {
-      alert("room full");
-    } else {
-      // console.log(socket.on("max users reached"));
-      // socket.on("max users reached", () => alert("max users reached"));
-      window.addEventListener("load", () => {
+window.addEventListener("load", () => {
+  fetch("/checkmaxi")
+    .then((res) => res.text())
+    .then((data) => {
+      if (data == "maxi reached") {
+        alert("room full");
+      } else {
+        // console.log(socket.on("max users reached"));
+        // socket.on("max users reached", () => alert("max users reached"));
         const room = h.getQString(location.href, "room");
         const username = sessionStorage.getItem("username");
         // fetch("/check")
@@ -532,7 +532,8 @@ fetch("/checkmaxi")
               }
             });
         }
-      });
-      // });
-    }
-  });
+
+        // });
+      }
+    });
+});
