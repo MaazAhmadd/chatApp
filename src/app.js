@@ -105,11 +105,11 @@ app.get("/checkmaxi", (req, res) => {
     console.log("max users allowed: ", maxusers.getmaxusers());
     console.log("get max users reached");
     res.status(200).send("maxi reached");
+    len = 0;
   } else {
     res.status(200).send("maxi not reached");
   }
 });
-len = 0;
 
 server.listen(port, function () {
   console.log(`Listening on port ${port}...`);
