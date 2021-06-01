@@ -19,7 +19,10 @@ let port = process.env.PORT || 3000;
 //   console.log(`Listening on port ${port}...`);
 // });
 let server = require("http").Server(app);
-let io = require("socket.io")(server, { reconnect: false });
+let io = require("socket.io")(
+  server
+  // { reconnect: false }
+);
 let stream = require("./ws/stream");
 let path = require("path");
 let favicon = require("serve-favicon");
