@@ -109,6 +109,7 @@ app.get("/checkmaxi", (req, res) => {
     res.status(200).send("maxi not reached");
   }
 });
+len = 0;
 
 server.listen(port, function () {
   console.log(`Listening on port ${port}...`);
