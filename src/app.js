@@ -43,6 +43,13 @@ app.post("/", (req, res) => {
     res.send("ok");
   }
 });
+app.get("/check", (req, res) => {
+  if (maxusers.getlocalmaxuser > maxusers.getmaxusers) {
+    res.status(200).send("maxusers reached");
+  } else {
+    res.status(200).send("maxusers not reached");
+  }
+});
 
 io.of("/stream").on("connection", stream);
 
