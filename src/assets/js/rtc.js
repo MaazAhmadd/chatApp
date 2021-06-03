@@ -378,10 +378,18 @@ window.addEventListener("load", () => {
             .getElementById("room-link-share")
             .addEventListener("click", (e) => {
               e.preventDefault();
-              prompt(
-                "Please share this link with your partners",
-                `${window.location.href}`
-              );
+              let dummy = document.createElement("input");
+              let text = window.location.href;
+              document.body.appendChild(dummy);
+              dummy.value = text;
+              dummy.select();
+              document.execCommand("copy");
+              document.body.removeChild(dummy);
+              let x = document.getElementById("snackbar");
+              x.className = "show";
+              setTimeout(function () {
+                x.className = x.className.replace("show", "");
+              }, 3000);
             });
 
           //When the video icon is clicked
