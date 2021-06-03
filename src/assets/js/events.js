@@ -5,9 +5,8 @@ let roomLink = "";
 
 window.addEventListener("load", () => {
   //When the chat icon is clicked
-  document
-    .querySelectorAll(".toggle-chat-pane")
-    .addEventListener("click", (e) => {
+  document.querySelectorAll(".toggle-chat-pane").forEach((el) => {
+    el.addEventListener("click", (e) => {
       let chatElem = document.querySelector("#chat-pane");
       let mainSecElem = document.querySelector("#main-section");
 
@@ -32,6 +31,7 @@ window.addEventListener("load", () => {
         }
       }, 300);
     });
+  });
 
   //When the video frame is clicked. This will enable picture-in-picture
   document.getElementById("local").addEventListener("click", () => {
