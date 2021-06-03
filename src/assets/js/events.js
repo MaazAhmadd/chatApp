@@ -1,4 +1,5 @@
 import helpers from "./helpers.js";
+import randomwords from "./randomword.js";
 
 let roomLink = "";
 
@@ -66,16 +67,17 @@ window.addEventListener("load", () => {
   document.getElementById("create-room").addEventListener("click", (e) => {
     e.preventDefault();
 
-    let roomName = document.querySelector("#room-name").value;
+    // let roomName = document.querySelector("#room-name").value;
+    let roomName = randomwords(2).join(" ");
     let yourName = document.querySelector("#your-name").value;
-    let maxusers = document.querySelector("#max-users").value;
+    // let maxusers = document.querySelector("#max-users").value;
 
-    postData("/sendmaxuser", { maxusers });
+    // postData("/sendmaxuser", { maxusers });
 
     //create room link
     roomLink = `${location.origin}?room=${roomName
       .trim()
-      .replace(" ", "_")}_${helpers.generateRandomString()}`;
+      .replaceAll(" ", "_")}_${helpers.generateRandomString()}`;
 
     if (roomName && yourName) {
       //remove error message, if any

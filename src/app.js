@@ -23,7 +23,7 @@ let io = require("socket.io")(
   server
   // { reconnect: false }
 );
-let stream = require("./ws/stream");
+// let stream = require("./ws/stream");
 let path = require("path");
 let favicon = require("serve-favicon");
 
@@ -37,11 +37,11 @@ app.get("/", (req, res) => {
   res.sendFile(__dirname + "/index.html");
 });
 
-app.post("/sendmaxuser", (req, res) => {
-  maxusers.setmaxusers(0);
-  maxusers.setmaxusers(req.body.maxusers);
-  res.status(200).send("everything ok");
-});
+// app.post("/sendmaxuser", (req, res) => {
+//   maxusers.setmaxusers(0);
+//   maxusers.setmaxusers(req.body.maxusers);
+//   res.status(200).send("everything ok");
+// });
 let len = 0;
 io.of("/stream").on("connection", (socket) => {
   socket.on("subscribe", (data) => {
@@ -78,7 +78,7 @@ io.of("/stream").on("connection", (socket) => {
   });
 });
 app.get("/checkmaxi", (req, res) => {
-  if (len > maxusers.getmaxusers()) {
+  if (len > 10) {
     res.status(200).send("maxi reached");
     len = 0;
   } else {
