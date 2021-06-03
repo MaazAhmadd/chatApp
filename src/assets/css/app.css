@@ -10,7 +10,7 @@
   background-color: #5d5f5c;
 }
 nav {
-  overflow-x: scroll;
+  overflow: scroll;
 }
 
 .chat-col {
