@@ -9,6 +9,10 @@
 .interface-color {
   background-color: #5d5f5c;
 }
+nav {
+  overflow-x: scroll;
+}
+
 .chat-col {
   right: -100vw;
   bottom: 0;
