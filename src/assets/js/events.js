@@ -15,29 +15,11 @@ window.addEventListener("load", () => {
         mainSecElem.classList.remove("col-md-9");
         mainSecElem.classList.add("col-md-12");
         chatElem.classList.remove("chat-opened");
-        document.querySelector(".text-logo").innerHTML(`cannachan.chat<button
-          class="
-            btn btn-sm
-            text-white
-            pull-right
-            btn-no-effect
-            toggle-chat-pane
-          "
-        >
-          <i class="fa fa-comment"></i>
-          <span
-            class="badge badge-danger very-small font-weight-lighter"
-            id="new-chat-notification"
-            hidden
-            >New</span
-          >
-        </button>`);
       } else {
         chatElem.attributes.removeNamedItem("hidden");
         mainSecElem.classList.remove("col-md-12");
         mainSecElem.classList.add("col-md-9");
         chatElem.classList.add("chat-opened");
-        document.querySelector(".text-logo").innerHTML(`cannachan.chat`);
       }
 
       //remove the 'New' badge on chat icon (if any) once chat is opened.
