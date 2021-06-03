@@ -5,7 +5,7 @@ let roomLink = "";
 
 window.addEventListener("load", () => {
   //When the chat icon is clicked
-  document.querySelector("#toggle-chat-pane").addEventListener("click", (e) => {
+  document.querySelector(".toggle-chat-pane").addEventListener("click", (e) => {
     let chatElem = document.querySelector("#chat-pane");
     let mainSecElem = document.querySelector("#main-section");
 
