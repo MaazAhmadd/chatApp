@@ -244,6 +244,7 @@
   }
 }
 .text-logo {
+  cursor: pointer;
   background-color: #da2727;
   color: #ffffff;
   padding: 5px 10px 7px 10px;

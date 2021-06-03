@@ -102,7 +102,7 @@ window.addEventListener("load", () => {
                 Share the room link with your partners.`;
 
       //empty the values
-      document.querySelector("#room-name").value = "";
+      // document.querySelector("#room-name").value = "";
       document.querySelector("#your-name").value = "";
       document.querySelector("#max-users").value = "";
     } else {
