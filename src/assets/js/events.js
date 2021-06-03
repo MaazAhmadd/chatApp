@@ -104,7 +104,7 @@ window.addEventListener("load", () => {
       //empty the values
       // document.querySelector("#room-name").value = "";
       document.querySelector("#your-name").value = "";
-      document.querySelector("#max-users").value = "";
+      // document.querySelector("#max-users").value = "";
     } else {
       document.querySelector("#err-msg").innerHTML = "All fields are required";
     }
