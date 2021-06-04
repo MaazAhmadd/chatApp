@@ -261,12 +261,18 @@
   /* Height of the footer*/
   height: auto;
   background: rgb(190, 190, 190);
+  z-index: 0;
 }
 .footer__container {
   text-align: center;
 }
 .footer__container > p {
   margin-bottom: 0;
+}
+@media screen and (max-width: 768px) {
+  .footer {
+    padding: 3px 3px 3px 3px;
+  }
 }
 
 /* Enter room button animation */
