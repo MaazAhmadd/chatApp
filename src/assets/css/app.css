@@ -286,7 +286,7 @@
   position: fixed;
   bottom: 40px;
   left: 0;
-  width: 23vh;
+  width: 23vw;
   height: 90%;
   object-fit: cover;
 }
