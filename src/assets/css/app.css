@@ -286,10 +286,15 @@
   position: fixed;
   bottom: 40px;
   left: 0;
-  width: 23%;
+  width: 23vh;
   height: 90%;
   object-fit: cover;
 }
+/* @media screen and (max-width: 768px) {
+  .banner {
+    width: 46%;
+  }
+} */
 
 /* Enter room button animation */
 
