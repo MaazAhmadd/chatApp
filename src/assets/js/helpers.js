@@ -113,26 +113,30 @@ export default {
   getIceServer() {
     return {
       iceServers: [
-        // {
-        //   urls: ["stun:eu-turn4.xirsys.com"],
-        // },
-        // {
-        //   username:
-        //     "ml0jh0qMKZKd9P_9C0UIBY2G0nSQMCFBUXGlk6IXDJf8G2uiCymg9WwbEJTMwVeiAAAAAF2__hNSaW5vbGVl",
-        //   credential: "4dd454a6-feee-11e9-b185-6adcafebbb45",
-        //   urls: [
-        //     "turn:eu-turn4.xirsys.com:80?transport=udp",
-        //     "turn:eu-turn4.xirsys.com:3478?transport=tcp",
-        //   ],
-        // },
         {
-          urls: "stun:stun1.l.google.com:19302",
+          urls: ["stun:bn-turn1.xirsys.com"],
         },
         {
-          urls: ["turn:numb.viagenie.ca"],
-          credential: "muazkh",
-          username: "webrtc@live.com",
+          username:
+            "_d_fzaTCCzgfI1BqmPS-zQK4fHFt2rvD9rz2AdNzYWR3GKtaAWzWdCobAJDCtVfzAAAAAGCmXG9kZXVzb3B1cw==",
+          credential: "c2f01986-b96a-11eb-8057-0242ac140004",
+          urls: [
+            "turn:bn-turn1.xirsys.com:80?transport=udp",
+            "turn:bn-turn1.xirsys.com:3478?transport=udp",
+            "turn:bn-turn1.xirsys.com:80?transport=tcp",
+            "turn:bn-turn1.xirsys.com:3478?transport=tcp",
+            "turns:bn-turn1.xirsys.com:443?transport=tcp",
+            "turns:bn-turn1.xirsys.com:5349?transport=tcp",
+          ],
         },
+        // {
+        //   urls: "stun:stun1.l.google.com:19302",
+        // },
+        // {
+        //   urls: ["turn:numb.viagenie.ca"],
+        //   credential: "muazkh",
+        //   username: "webrtc@live.com",
+        // },
       ],
     };
   },
