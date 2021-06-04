@@ -254,16 +254,19 @@
   font-size: 16px;
 }
 .footer {
-  position: fixed;
-  padding: 8px 8px 0px 8px;
+  position: absolute;
+  padding: 8px 8px 8px 8px;
   bottom: 0;
   width: 100%;
   /* Height of the footer*/
-  height: 40px;
+  height: auto;
   background: rgb(190, 190, 190);
 }
 .footer__container {
   text-align: center;
+}
+.footer__container > p {
+  margin-bottom: 0;
 }
 
 /* Enter room button animation */
