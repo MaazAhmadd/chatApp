@@ -69,12 +69,8 @@ window.addEventListener("load", () => {
   document.getElementById("create-room").addEventListener("click", (e) => {
     e.preventDefault();
 
-    // let roomName = document.querySelector("#room-name").value;
     let roomName = randomwords(2).join(" ");
     let yourName = document.querySelector("#your-name").value;
-    // let maxusers = document.querySelector("#max-users").value;
-
-    // postData("/sendmaxuser", { maxusers });
 
     //create room link
     roomLink = `${location.origin}?room=${roomName
@@ -90,21 +86,35 @@ window.addEventListener("load", () => {
 
       //show message with link to room
 
-      document.querySelector(
-        "#room-created"
-      ).innerHTML = `<p style="color: #028c00;">Room successfully created.</p>.<a href='${roomLink}' class="btn btn-block animated-btn">
-      <span></span>
-      <span></span>
-      <span></span>
-      <span></span>
-      enter room</a>
-      <br>
-                Share the room link with your partners.`;
+      document.body.classList.add("showLoginForm");
+      document.getElementById("roomLink").value = roomLink;
+      document.querySelector(".animated-btn").href = roomLink;
+      document
+        .getElementById("room-link-share-creation")
+        .addEventListener("click", (e) => {
+          e.preventDefault();
+          let dummy = document.createElement("input");
+          let text = roomLink;
+          document.body.appendChild(dummy);
+          dummy.value = text;
+          dummy.select();
+          document.execCommand("copy");
+          document.body.removeChild(dummy);
+          let x = document.getElementById("snackbar");
+          x.className = "show";
+          setTimeout(function () {
+            x.className = x.className.replace("show", "");
+          }, 3000);
+        });
+
+      document
+        .querySelector("#close-the-popup")
+        .addEventListener("click", () => {
+          document.body.classList.remove("showLoginForm");
+        });
 
       //empty the values
-      // document.querySelector("#room-name").value = "";
       document.querySelector("#your-name").value = "";
-      // document.querySelector("#max-users").value = "";
     } else {
       document.querySelector("#err-msg").innerHTML = "All fields are required";
     }

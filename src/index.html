@@ -125,19 +125,41 @@
       </div>
     </nav>
 
+    <div class="popup-overlay"></div>
+    <div class="popup">
+      <div class="popup-close" id="close-the-popup">×</div>
+      <div class="form">
+        <div class="element">
+          <input type="text" id="roomLink" />
+          <button
+            class="btn btn-sm rounded-0 btn-no-effect"
+            id="room-link-share-creation"
+            title="Copy"
+            style="color: white; font-weight: bold; margin-bottom: 36px"
+          >
+            Copy Room Link
+            <i class="fa fa-link text-white"></i>
+          </button>
+        </div>
+
+        <div class="element">
+          <a href="" class="btn btn-block animated-btn">
+            <span></span>
+            <span></span>
+            <span></span>
+            <span></span>
+            enter room</a
+          >
+        </div>
+      </div>
+    </div>
+
     <div class="container-fluid" id="room-create" hidden>
       <div class="row">
         <a href="https://www.betcoin.ag?r=226391">
           <img
-            style="
-              position: fixed;
-              bottom: 40px;
-              left: 0;
-              width: 23%;
-              height: 90%;
-              object-fit: cover !important;
-            "
-            src="assets/img/betcoin-banner-300x600.gif"
+            class="banner"
+            src="aassets/img/betcoin-banner-300x600.gif"
             alt="banner"
           />
         </a>
@@ -149,16 +171,6 @@
           <span class="form-text small text-danger" id="err-msg"></span>
         </div>
 
-        <!-- <div class="col-12 col-md-4 offset-md-4 mb-3">
-          <label for="room-name">Room Name</label>
-          <input
-            type="text"
-            id="room-name"
-            class="form-control rounded-0"
-            placeholder="Room Name"
-          />
-        </div> -->
-
         <div class="col-12 col-md-4 offset-md-4 mb-3">
           <label for="your-name">Your Name</label>
           <input
@@ -168,15 +180,6 @@
             placeholder="Your Name"
           />
         </div>
-        <!-- <div class="col-12 col-md-4 offset-md-4 mb-3">
-          <label for="your-name">Number of users</label>
-          <input
-            type="number"
-            id="max-users"
-            class="form-control rounded-0"
-            placeholder="enter number of users"
-          />
-        </div> -->
 
         <div class="col-12 col-md-4 offset-md-4 mb-3">
           <button
@@ -186,8 +189,6 @@
             Create Room
           </button>
         </div>
-
-        <div class="col-12 col-md-4 offset-md-4 mb-3" id="room-created"></div>
       </div>
     </div>
 
