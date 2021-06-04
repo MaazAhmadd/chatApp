@@ -253,10 +253,17 @@
   font-weight: 900;
   font-size: 16px;
 }
-.footer-branding {
+.footer {
   position: fixed;
+  padding: 8px 8px 0px 8px;
   bottom: 0;
-  left: 33.33333%;
+  width: 100%;
+  /* Height of the footer*/
+  height: 40px;
+  background: rgb(190, 190, 190);
+}
+.footer__container {
+  text-align: center;
 }
 
 /* Enter room button animation */
