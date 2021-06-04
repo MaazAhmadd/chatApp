@@ -546,6 +546,11 @@
   box-shadow: 5px 5px 3px rgba(0, 0, 0, 0.2);
   transition: transform 300ms ease-in-out, opacity 300ms ease-in-out;
 }
+@media screen and (max-width: 768px) {
+  .popup {
+    width: 350px;
+  }
+}
 body.showLoginForm .popup-overlay {
   display: block;
 }
