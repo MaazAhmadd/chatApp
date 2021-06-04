@@ -101,16 +101,16 @@
 }
 
 .local-video {
-  bottom: 40px;
+  bottom: 0;
   left: 0;
   position: fixed;
   width: 15vw;
 }
-@media screen and (max-width: 768px) {
+/* @media screen and (max-width: 768px) {
   .local-video {
     bottom: 30px;
   }
-}
+} */
 
 .mirror-mode {
   -ms-transform: scaleX(-1);
