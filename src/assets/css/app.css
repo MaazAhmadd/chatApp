@@ -290,11 +290,11 @@
   height: 90%;
   object-fit: cover;
 }
-/* @media screen and (max-width: 768px) {
+@media screen and (max-width: 768px) {
   .banner {
-    width: 46%;
+    width: 46vw;
   }
-} */
+}
 
 /* Enter room button animation */
 
