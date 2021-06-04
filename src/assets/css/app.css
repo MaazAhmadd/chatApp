@@ -278,6 +278,7 @@
   .footer {
     padding: 1px;
     z-index: -100000;
+    display: none;
   }
 }
 
