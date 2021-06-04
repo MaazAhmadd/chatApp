@@ -45,7 +45,7 @@ window.addEventListener("load", () => {
           socket.on("connect", () => {
             //set socketId
             // socket.emit("request", { user: "user connected" });
-            // socketId = socket.io.engine.id;
+            socketId = socket.io.engine.id;
 
             socket.emit("subscribe", {
               room: room,
@@ -347,7 +347,6 @@ window.addEventListener("load", () => {
               toggleRecordingIcons(false);
 
               h.saveRecordedStream(recordedStream, username);
-
               setTimeout(() => {
                 recordedStream = [];
               }, 3000);
