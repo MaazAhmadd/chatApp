@@ -302,6 +302,7 @@
   width: 23vw;
   height: 90%;
   object-fit: cover;
+  z-index: -100001;
 }
 @media screen and (max-width: 768px) {
   .banner {
