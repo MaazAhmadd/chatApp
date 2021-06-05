@@ -307,6 +307,7 @@
 @media screen and (max-width: 768px) {
   .banner {
     width: 46vw;
+    bottom: 22px;
   }
 }
 
