@@ -260,7 +260,7 @@
 }
 .footer {
   position: absolute;
-  padding: 8px 8px 8px 8px;
+  padding: 8px;
   bottom: 0;
   width: 100%;
   /* Height of the footer*/
@@ -284,7 +284,7 @@
 }
 @media screen and (max-width: 768px) {
   .footer {
-    padding: 1px;
+    padding: 0;
     z-index: -100000;
   }
   .footer__container .p1 {
